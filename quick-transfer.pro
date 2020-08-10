@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS \
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    http_server.cpp \
     main.cpp \
     mainwindow.cpp \
     message_show.cpp \
@@ -31,6 +32,9 @@ SOURCES += \
     qrencode/split.c
 
 HEADERS += \
+    http_server.h \
+    inja/inja.hpp \
+    inja/nlohmann/json.hpp \
     mainwindow.h \
     message_show.h \
     qrencode/bitstream.h \
@@ -56,4 +60,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 OTHER_FILES += qrencode/config.h
 
 DISTFILES += \
-    README.md
+    README.md \
+    html/show_text.html

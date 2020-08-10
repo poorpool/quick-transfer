@@ -2,6 +2,7 @@
 #define MESSAGE_SHOW_H
 
 #include "qrencode/qrencode.h"
+#include "http_server.h"
 #include <QString>
 #include <QLabel>
 #include <QPainter>
@@ -11,7 +12,7 @@
 
 class MessageShow {
 public:
-    static void showMessage(QString qrCodeUrl, QString otherMessage);
+    static void showMessage(QString qrCodeUrl);
 };
 
 #endif // MESSAGE_SHOW_H

@@ -1,6 +1,6 @@
 #include "message_show.h"
 
-void MessageShow::showMessage(QString qrCodeUrl, QString otherMessage) {
+void MessageShow::showMessage(QString qrCodeUrl) {
     QRcode *qrcode = QRcode_encodeString(qrCodeUrl.toStdString().c_str(), 2, QR_ECLEVEL_H, QR_MODE_8, 1);
     QLabel *qLabel = new QLabel();
     qint32 qrcodeWidth = qrcode->width > 0 ? qrcode->width : 1;// 二维码一行有多少个黑白点
@@ -33,8 +33,9 @@ void MessageShow::showMessage(QString qrCodeUrl, QString otherMessage) {
     qDialog->setWindowTitle("扫描二维码");
     QVBoxLayout *qVBoxLayout = new QVBoxLayout();
     qVBoxLayout->addWidget(qLabel);
-    QLabel *textLabel = new QLabel(otherMessage);
-    qVBoxLayout->addWidget(textLabel);
+
+    HttpServer httpserver;
+
     qDialog->setLayout(qVBoxLayout);
 
     qDialog->exec();

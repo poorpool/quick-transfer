@@ -18,5 +18,7 @@ MainWindow::~MainWindow()
 void MainWindow::on_pushButton_clicked()
 {
     QString str = ui->plainTextEdit->toPlainText();
-    MessageShow::showMessage(str, "qwq");
+    if (str != nullptr && str.length() > 0) {
+        MessageShow::showMessage(str);
+    }
 }
