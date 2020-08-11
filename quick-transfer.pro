@@ -62,3 +62,5 @@ OTHER_FILES += qrencode/config.h
 DISTFILES += \
     README.md \
     html/show_text.html
+
+QMAKE_POST_LINK += cp $$PWD/html $$OUT_PWD/html -r

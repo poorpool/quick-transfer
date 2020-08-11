@@ -5,10 +5,35 @@
   <link rel="stylesheet" href="static/Semantic-UI/semantic.min.css">
   <script src="static/Semantic-UI/semantic.min.js"></script>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <style>
+    body {
+      background: #d8e3e7;
+    }
+    body > .grid {
+      height: 100%;
+    }
+    pre {
+      white-space: pre-wrap;
+      white-space: -moz-pre-wrap;
+      white-space: -pre-wrap;
+      white-space: -o-pre-wrap;
+      *word-wrap: break-word;
+      *white-space : normal ;
+    }
+    .segment {
+      background-color: #f0f5e5;!important
+    }
+  </style>
 </head>
 <body>
-  <h1 class="ui center aligned header">传输文字</h1>
-  <div class="ui text container">
-    {{ text }}
+  <div class="ui very padded middle aligned center aligned grid">
+    <div class="column">
+      <h1 class="ui center aligned header">传输文字</h1>
+      <div class="ui text justified container stacked segment">
+        <pre>
+{{ text }}
+        </pre>
+      </div>
+    </div>
   </div>
 </body>

@@ -12,7 +12,7 @@
 
 class MessageShow {
 public:
-    static void showMessage(QString qrCodeUrl);
+    static void showMessage(QString text);
 };
 
 #endif // MESSAGE_SHOW_H

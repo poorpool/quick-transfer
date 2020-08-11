@@ -1,6 +1,10 @@
 #include "message_show.h"
 
-void MessageShow::showMessage(QString qrCodeUrl) {
+void MessageShow::showMessage(QString text) {
+    QString qrCodeUrl;
+
+    HttpServer httpserver(HttpServer::text, text, qrCodeUrl);
+
     QRcode *qrcode = QRcode_encodeString(qrCodeUrl.toStdString().c_str(), 2, QR_ECLEVEL_H, QR_MODE_8, 1);
     QLabel *qLabel = new QLabel();
     qint32 qrcodeWidth = qrcode->width > 0 ? qrcode->width : 1;// 二维码一行有多少个黑白点
@@ -25,7 +29,7 @@ void MessageShow::showMessage(QString qrCodeUrl) {
         }
     }
 
-    QPixmap mainmap=QPixmap::fromImage(mainimg);
+    QPixmap mainmap = QPixmap::fromImage(mainimg);
 
     qLabel->setPixmap(mainmap);
 
@@ -34,7 +38,9 @@ void MessageShow::showMessage(QString qrCodeUrl) {
     QVBoxLayout *qVBoxLayout = new QVBoxLayout();
     qVBoxLayout->addWidget(qLabel);
 
-    HttpServer httpserver;
+    QLabel *labelText = new QLabel();
+    labelText->setText(qrCodeUrl.prepend("或者在浏览器中访问 "));
+    qVBoxLayout->addWidget(labelText);
 
     qDialog->setLayout(qVBoxLayout);
 

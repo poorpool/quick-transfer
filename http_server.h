@@ -7,6 +7,7 @@
 #include <QTcpServer>
 #include <QHostInfo>
 #include <QWidget>
+#include <QTcpSocket>
 
 class HttpServer : public QObject
 {
@@ -14,12 +15,15 @@ class HttpServer : public QObject
 private:
     QTcpServer tcpServer;
     int port;
-private slots:
-    void onNewConnection();
+    void writeHttpAndStr(QTcpSocket *tcpSocket, QString &str);
+    void showText(QString str);
 public:
+    enum ServerType{
+      text, file
+    };
     HttpServer();
+    HttpServer(ServerType, QString &str, QString &qrCodeUrl);
     ~HttpServer();
-    void showText(QString text);
 };
 
 #endif // HTTP_SERVER_H
